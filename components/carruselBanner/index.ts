@@ -1,0 +1,2 @@
+export { CarruselBanner } from "./carruselBanner";
+

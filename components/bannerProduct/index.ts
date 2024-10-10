@@ -1,0 +1,2 @@
+export { BannerProduct } from "./bannerProduct";
+

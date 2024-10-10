@@ -1,0 +1,1 @@
+export { BannerDiscount } from "./bannerDiscount";
