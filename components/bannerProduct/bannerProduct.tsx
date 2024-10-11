@@ -1,18 +1,24 @@
-import Link from "next/link"
-import { buttonVariants } from "../ui/button"
+import Link from "next/link";
+import { buttonVariants } from "../ui/button";
 
 export const BannerProduct = () => {
-    return(
+    return (
         <>
             <div className="mt-4 text-center">
-                <p>Sum'ergete en una experiencia única</p>
-                <h4 className="mt-2 text-5xl font-extrabold upercase">Artesanias y manuealidades enfocadas en el espiritu</h4>
+                <p>Sumérgete en una experiencia única</p>
+                <h4 className="mt-2 text-5xl font-extrabold uppercase">
+                    Artesanías y manualidades enfocadas en el espíritu
+                </h4>
                 <p>Despierta tus sentidos</p>
-                <Link href="#" className={buttonVariants()}> comprar</Link>   
+                {/* Correct Link with <a> tag */}
+                <Link href="#" legacyBehavior>
+                    <a className={buttonVariants()}>Comprar</a>
+                </Link>
             </div>
-            <div className="h-[900px] bg-url('/Designer.jpeg') bg-center mt-5">
-
+            
+            {/* Fixed background image with correct Tailwind syntax */}
+            <div className="h-[300px] bg-cover lg:h-[600px] bg-[url('/top-view-paint-can.jpg')] bg-center mt-5">
             </div>
         </>
-    )
-}
+    );
+};
