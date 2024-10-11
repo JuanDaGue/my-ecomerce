@@ -6,6 +6,7 @@ import { CategoryProduct } from "@/types/categoryProducts"
 import { useParams, useRouter } from "next/navigation"
 import { Separator } from "@radix-ui/react-dropdown-menu"
 import { FiltersCategory } from "../components/filtersCategory"
+import { ProductActionButtons } from "@/components/ui/ProductActionButtons"
 
 export default  function page (){
     const params = useParams();
@@ -17,7 +18,6 @@ export default  function page (){
             {result!= null && (<h1 className="text-3xl font-medium">Increilbes {result[0]?.category.categoryName}</h1>)}
             <Separator>
                 <div>
-                    filters of categories
                     <FiltersCategory></FiltersCategory>
                 </div>
             </Separator>
@@ -25,8 +25,10 @@ export default  function page (){
             {loading ? (
                 <SkeletonLoader count={3} />
             ) : ( result.map((product:CategoryProduct) => (             
-                <div key={product.id} style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px' }}>
+                <div key={product.id} style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px' }} className="relative overflow-hidden rounded-t-lg">
+                    
                             <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`} alt={product.productName} style={{ width: '100%' }} />
+                            <ProductActionButtons slug={product.slug} />
                             <h3>{product.productName}</h3>
                             {/* <p>{product.description}</p> */}
                             <p><strong>Price:</strong> {product.price}</p>

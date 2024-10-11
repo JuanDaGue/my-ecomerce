@@ -6,7 +6,9 @@ import { ProductType } from "@/types/products";
 import { ResponseType } from "@/types/response";
 import { useRef } from "react";
 import { ButtonNextBack } from "../ui/buttonNextBack";
-import { ProductActionButtons } from "../ui/ProductActionButtons";  // Import new action buttons
+import { ProductActionButtons } from "../ui/ProductActionButtons"; 
+import { ScrollButtons } from "../ui/ScrollButtons";
+
 
 export const FeatureProducts = () => {
     const { loading, result }: ResponseType = useGetFeatureProducts();
@@ -44,6 +46,7 @@ export const FeatureProducts = () => {
 
                     <div className="relative">
                         {/* Scrollable Products Container */}
+
                         <div
                             ref={scrollRef}
                             className="flex space-x-6 overflow-x-hidden no-scrollbar"

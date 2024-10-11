@@ -1,4 +1,3 @@
-import { Result } from "postcss"
 import { use, useEffect, useState } from "react"
 
 
