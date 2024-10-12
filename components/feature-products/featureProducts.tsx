@@ -7,14 +7,12 @@ import { ResponseType } from "@/types/response";
 import { useRef } from "react";
 import { ButtonNextBack } from "../ui/buttonNextBack";
 import { ProductActionButtons } from "../ui/ProductActionButtons"; 
-import { ScrollButtons } from "../ui/ScrollButtons";
+
 
 
 export const FeatureProducts = () => {
     const { loading, result }: ResponseType = useGetFeatureProducts();
-
     const scrollRef = useRef<HTMLDivElement>(null);
-
     const scrollLeft = () => {
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
@@ -66,7 +64,7 @@ export const FeatureProducts = () => {
                                             />
 
                                             {/* Product Action Buttons */}
-                                            <ProductActionButtons slug={slug} />  {/* Use new component */}
+                                            <ProductActionButtons product={product} />  {/* Use new component */}
                                         </div>
                                         {/* Product Details */}
                                         <div className="p-4 text-center">

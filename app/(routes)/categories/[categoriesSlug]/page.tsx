@@ -28,7 +28,7 @@ export default  function page (){
                 <div key={product.id} style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px' }} className="relative overflow-hidden rounded-t-lg">
                     
                             <img src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`} alt={product.productName} style={{ width: '100%' }} />
-                            <ProductActionButtons slug={product.slug} />
+                            <ProductActionButtons product={product} />
                             <h3>{product.productName}</h3>
                             {/* <p>{product.description}</p> */}
                             <p><strong>Price:</strong> {product.price}</p>

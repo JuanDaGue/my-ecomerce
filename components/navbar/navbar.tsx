@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { FiShoppingCart, FiMenu, FiX, FiHeart, FiUser } from 'react-icons/fi';
 import MobileMenu from './MobileMenu';
 import { ModeToggle } from '../modeToggle/ModeToggle';
+import { useCart } from '@/hooks/use-cart';
+import { BaggageClaim } from 'lucide-react';
 export const Navbar = () => {
     const [navOpen, setNavOpen] = useState(false);
-
+    const cart = useCart()
     const toggleNav = () => {
         setNavOpen(!navOpen);
     };
@@ -58,7 +60,13 @@ export const Navbar = () => {
 
             {/* Cart Icon */}
             <Link href="/cart">
-                <FiShoppingCart size={24} />
+                {cart.items.length === 0?(<FiShoppingCart size={24} />):(
+                    <div className='flex gap-1'>
+                        <BaggageClaim strokeWidth={1} className='cursor-pointer'></BaggageClaim>
+                        <span>{cart.items.length}</span>
+                    </div>
+                )
+            }
             </Link>
 
             {/* Mobile Menu Button */}
