@@ -16,25 +16,22 @@ export const useFavorites = create(persist<CartStore>((set, get) => ({
         const existingItem = currentItem.find((item) => item.id === data.id);
         if (existingItem) {
         return toast({
-            title: "El producto ya existe en el carrito 🥀",
+            title: "El producto ya existe en favoritos 🥀",
             variant: "destructive"
         });
         }
         set({
         items: [...get().items, data]
         });
-        toast({ title: "Producto añadido al carrito 💕" });
+        toast({ title: "Producto añadido a fovoritos 💕" });
     },
     removeLoveItem: (id: number) => {
         set({ items: [...get().items.filter((item) => item.id != id)] });
         toast({
-        title: "Producto Eliminado del carrito 🖤"
+        title: "Producto Eliminado de favoritos 🖤"
         });
     },
     }), {
     name: "FavoriteItems",
     storage: createJSONStorage(() => localStorage)
     }));
-
-    // Tailwind CSS styled card component for favorite products
-   

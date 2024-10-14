@@ -1,7 +1,7 @@
+import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 import { useCart } from "@/hooks/use-cart";
-import useLoveProducts, { useFavorites } from "@/hooks/use-favorite";
+import { useFavorites } from "@/hooks/use-favorite";
 import { ProductType } from "@/types/products";
- // Assuming you're using Heroicons
 import { Heart } from "lucide-react";
 
 interface InfoProps {
@@ -10,21 +10,38 @@ interface InfoProps {
 
 export function InfoCard({ product }: InfoProps) {
     const { addItem } = useCart();
-    const {addLoveItem,items}= useFavorites();
-    console.log(items)
+    const { addLoveItem, items, removeLoveItem } = useFavorites();
+
+    // Check if the product is in favorites
+    const isFavorite = items.some((favItem: ProductType) => favItem.id === product.id);
+
+    // Handle favorite toggle
+    const handleToggleFavorite = () => {
+        if (isFavorite) {
+            removeLoveItem(product.id);
+        } else {
+            addLoveItem(product);
+        }
+    };
+
     return (
         <div className="px-6 py-6 sm:py-32 relative w-full h-full">
-            {/* Category Tag with Heart Icon */}
+            {/* Favorite Heart Icon */}
             <button
-                    className="absolute top-0 text-black hover:text-red-500 transition-colors duration-300"
-                    aria-label="Add to favorites"
-                >
-                <Heart width={30} strokeWidth={1} className="h-6 w-6 hover:fill-black" onClick={()=>addLoveItem(product)}/>
-                
-                </button>
+                className="absolute top-0 text-black hover:text-red-500 transition-colors duration-300"
+                aria-label="Add to favorites"
+                onClick={handleToggleFavorite}  // Updated here
+            >
+                <Heart
+                    width={30}
+                    strokeWidth={1}
+                    className={`h-6 w-6 transition-all duration-300 ${isFavorite ? 'fill-black dark:fill-white' : 'fill-none hover:fill-black'}`}
+                />
+            </button>
+
+            {/* Category Tag */}
             <div className="absolute top-0 right-0 bg-gray-800 text-white text-xs px-3 py-1 rounded-bl-lg flex items-center space-x-2">
                 <span>{product.category.categoryName}</span>
-
             </div>
 
             {/* Product Information */}
@@ -32,7 +49,7 @@ export function InfoCard({ product }: InfoProps) {
             <p className="text-gray-500 mt-2">{product.description}</p>
 
             <div className="flex justify-between items-center mt-4">
-                <span className="text-lg font-semibold text-gray-900">${product.price}</span>
+            <p><PriceFormatter value={product.price} /></p>
                 <span className="text-xs text-gray-400">
                     Publicado el: {new Date(product.publishedAt).toLocaleDateString()}
                 </span>

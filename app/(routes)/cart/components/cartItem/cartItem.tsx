@@ -1,31 +1,23 @@
 import { useCart } from "@/hooks/use-cart"
 import { ProductType } from "@/types/products"
-import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { X } from "lucide-react"
+import { ProductImgMini } from "@/components/shared/productImgMini"
+import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter"
 
 interface CartItemProps {
     product: ProductType
 }
 export const CartItem = (props:CartItemProps) => {
     const {product} =props
-    const router = useRouter();
     const {removeItem} = useCart()
     return(
-        <li className="flex py-6 border-b rounded cursor-pointer">
-            <div className=" bg-gray-50"
-            onClick={()=> router.push(`/product/${product.slug}`)}
-            >
-            <img
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0]?.formats?.small?.url}` || `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0]?.url}`}
-                alt={product.productName}
-                className="w-24 h-24 overflow-hidden rounded-md sm:w-auto sm:h-32"
-            />       
-            </div>
+        <li className="flex py-6 border-b rounded cursor-pointer bg-white/40  dark:bg-black/80">
+            <ProductImgMini slug={product.slug} url= {product.images[0]?.url}  productName={product.productName}/>
             <div className="flex justify-between flex-1 px-6">
                 <div>
                     <h2 className="text-ld font-bold ">{product.productName}</h2>
-                    <p className="font-bold">{product.price}</p>
+                    <p><PriceFormatter value={product.price} /></p>
                     <div className="flex items-center justify-between gap-3">
                         <p className="px-2 py-1 text-white bg-black rounded-full dark:bg-white dark:text-black w-fit">{product.taste
                         }</p>
@@ -34,7 +26,7 @@ export const CartItem = (props:CartItemProps) => {
                     </div>
 
                     <div>
-                        <button className={cn("rounded-full flex items-center justify-center bg-white border shadow-md p-1 hover:scale-110 transition")}>
+                        <button className={cn("rounded-full flex items-center justify-center bg-white border shadow-md p-1 hover:scale-110 transition  dark:bg-black/80")}>
                         <X size={20} onClick={()=> removeItem(product.id)}/>
                         </button>
                     </div>

@@ -10,8 +10,7 @@ interface ProductActionButtonsProps {
 
 export const ProductActionButtons = ({ product }: ProductActionButtonsProps) => {
     const router = useRouter();
-    const {addItem, items}= useCart()
-    console.log('items', items)
+    const {addItem}= useCart()
     return (
         <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50">
             <div className="flex space-x-4">

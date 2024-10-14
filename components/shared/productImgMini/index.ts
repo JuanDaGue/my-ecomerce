@@ -1,0 +1,1 @@
+export { ProductImgMini } from "./productImgMini";

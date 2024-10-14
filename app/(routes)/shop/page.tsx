@@ -1,25 +1,20 @@
 "use client";
-import { useGetCategotyProducts } from "@/api/getCategoryProduct";
+import { ProductType } from "@/types/products";  
+import { useGetAllProducts } from "@/api/getAllProducts";
 import { SkeletonLoader } from "@/components/SkeletonLoader";
 import { ResponseType } from "@/types/response";
-import { CategoryProduct } from "@/types/categoryProducts";
-import { useParams, useRouter } from "next/navigation";
-import { Separator } from "@radix-ui/react-dropdown-menu";
-import { FiltersCategory } from "../components/filtersCategory";
-import { ProductActionButtons } from "@/components/ui/ProductActionButtons";
 import { useFavorites } from "@/hooks/use-favorite";
-import { Heart } from "lucide-react";
-import { ProductType } from "@/types/products";
+import { Separator } from "@/components/ui/separator";
+import { FiltersCategory } from "../categories/components/filtersCategory";
+import { CategoryProduct } from "@/types/categoryProducts";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
-
-interface InfoProps {
-    product: ProductType;
-}
+import { Heart } from "lucide-react";
+import { ProductActionButtons } from "@/components/ui/ProductActionButtons";
 
 export default function Page() {
-    const params = useParams();
-    const { categoriesSlug } = params;
-    const { result, loading }: ResponseType = useGetCategotyProducts(categoriesSlug);
+
+    const { result, loading }: ResponseType = useGetAllProducts();
+
     const { addLoveItem, items, removeLoveItem } = useFavorites();
 
     // Handle favorite toggle
@@ -33,18 +28,18 @@ export default function Page() {
     };
 
     return (
-        <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24">
-            {result != null && <h1 className="text-3xl font-medium">Increíbles {result[0]?.category.categoryName}</h1>}
+        <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24 ">
+            {result != null && <h1 className="text-3xl font-medium">Disfruta todos nuestros productos </h1>}
             <Separator>
                 <div>
                     <FiltersCategory />
                 </div>
             </Separator>
-            <div
+            <div 
                 style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "16px" }}
             >
                 {loading ? (
-                    <SkeletonLoader count={3} />
+                    <SkeletonLoader count={6} />
                 ) : (
                     result.map((product: CategoryProduct) => {
                         const isFavorite = items.some((favItem: ProductType) => favItem.id === product.id); // Calculate favorite state per product
@@ -53,7 +48,7 @@ export default function Page() {
                             <div
                                 key={product.id}
                                 style={{ border: "1px solid #ccc", padding: "16px", borderRadius: "8px" }}
-                                className="relative overflow-hidden rounded-t-lg bg-white/40"
+                                className="relative overflow-hidden rounded-t-lg bg-white/40  dark:bg-black/40"
                             >
                                 <img
                                     src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}`}

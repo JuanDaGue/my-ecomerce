@@ -34,7 +34,7 @@ export const dataCarrouselTpo= [
 export const CarruselBanner = () => {
     const router = useRouter()
     return (
-        <div className="bg-gray-200 dark:bg-primary my-5">
+        <div className="bg-gray-200 dark:bg-black/80 my-5">
             <Carousel className="w-full max-w-4xl mx-auto"
                 plugins={[Autoplay({
                     delay:2500

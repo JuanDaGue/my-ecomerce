@@ -7,6 +7,7 @@ import { ResponseType } from "@/types/response";
 import { useRef } from "react";
 import { ButtonNextBack } from "../ui/buttonNextBack";
 import { ProductActionButtons } from "../ui/ProductActionButtons"; 
+import { PriceFormatter } from "../ui/ScrollButtons/PriceFormatter";
 
 
 
@@ -56,7 +57,7 @@ export const FeatureProducts = () => {
                                         key={id}
                                         className="flex-none w-80 border rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
                                     >
-                                        <div className="relative overflow-hidden rounded-t-lg">
+                                        <div className="relative overflow-hidden rounded-t-lg bg-white/40">
                                             <img
                                                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0]?.formats?.small?.url}` || `${process.env.NEXT_PUBLIC_BACKEND_URL}${images[0]?.url}`}
                                                 alt={productName}
@@ -69,7 +70,7 @@ export const FeatureProducts = () => {
                                         {/* Product Details */}
                                         <div className="p-4 text-center">
                                             <h4 className="text-xl font-semibold text-gray-900">{productName}</h4>
-                                            <p className="text-gray-600 mt-2 text-sm">Price: <span className="text-lg font-bold text-gray-800">${price}</span></p>
+                                            <p> <PriceFormatter value={price} /></p>
                                         </div>
                                     </div>
                                 );

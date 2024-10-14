@@ -18,13 +18,13 @@ export const ChooseCategory = () => {
 
 
     return (
-        <div className="categories-container mx-12 px-4">
+        <div className="categories-container mx-12 px-4 ">
         <h3 className="text-2xl font-bold mb-6">Elige la categoria</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {loading ? (
                 <SkeletonLoader count={3} />
             ) : (result?.map((category: CategoryType) => (
-            <div key={category.id} className="category-card bg-gray-100  rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <div key={category.id} className="category-card bg-gray-100  rounded-lg shadow-lg hover:shadow-xl transition-shadow  dark:bg-black/80">
                 <Link href={`/categories/${category.slug}`}>
                 <div className="block text-center">
                     <img
