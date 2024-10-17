@@ -30,7 +30,7 @@ export function InfoCard({ product }: InfoProps) {
             <button
                 className="absolute top-0 text-black hover:text-red-500 transition-colors duration-300"
                 aria-label="Add to favorites"
-                onClick={handleToggleFavorite}  // Updated here
+                onClick={handleToggleFavorite}
             >
                 <Heart
                     width={30}
@@ -38,23 +38,22 @@ export function InfoCard({ product }: InfoProps) {
                     className={`h-6 w-6 transition-all duration-300 ${isFavorite ? 'fill-black dark:fill-white' : 'fill-none hover:fill-black'}`}
                 />
             </button>
-
             {/* Category Tag */}
             <div className="absolute top-0 right-0 bg-gray-800 text-white text-xs px-3 py-1 rounded-bl-lg flex items-center space-x-2">
                 <span>{product.category.categoryName}</span>
             </div>
-
             {/* Product Information */}
             <h3 className="text-2xl font-bold text-gray-900">{product.productName}</h3>
             <p className="text-gray-500 mt-2">{product.description}</p>
-
+            <div className="mt-4 text-gray-500">
+                <p>Dimensiones: {product.width} x {product.heigth} cm</p>
+            </div>
             <div className="flex justify-between items-center mt-4">
-            <p><PriceFormatter value={product.price} /></p>
+                <p><PriceFormatter value={product.price} /></p>
                 <span className="text-xs text-gray-400">
                     Publicado el: {new Date(product.publishedAt).toLocaleDateString()}
                 </span>
             </div>
-
             {/* CTA Button */}
             <div className="mt-4">
                 <button

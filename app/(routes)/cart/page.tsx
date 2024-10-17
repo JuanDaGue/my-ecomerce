@@ -4,13 +4,21 @@ import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
 import { CartItem } from "./components/cartItem";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
-
+import {loadStripe} from '@stripe/stripe-js'
 
 export default function Page() {
     const {items, removeAll}= useCart();
-    const prices = items.map((item)=> Number(item.price)
-    )
+    const prices = items.map((item)=> Number(item.price) )
+    const stripePrimise = loadStripe()
     const totalPrice = prices.reduce((total, price)=> total +price, 0)
+
+    const buyStripe = async function name(params:type) {
+        try {
+            const stripe = await stripePrimise
+        } catch (error) {
+            console.log(error)
+        }
+    }
     return(
 <div className="max-w-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8 min-h-screen">
     <h1 className="mb-5 text-3xl font-bold"> Tu carrito de compras</h1>

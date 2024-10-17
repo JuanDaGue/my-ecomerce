@@ -1,3 +1,5 @@
+import { CategoryProduct } from "./categoryProducts";
+import { CategoryType } from "./categories";
 interface ImageFormat {
     name: string;
     hash: string;
@@ -5,7 +7,7 @@ interface ImageFormat {
     mime: string;
     path: string | null;
     width: number;
-    height: number;
+    heigth: number;
     size: number;
     sizeInBytes: number;
     url: string;
@@ -18,7 +20,7 @@ interface Image {
     alternativeText: string | null;
     caption: string | null;
     width: number;
-    height: number;
+    heigth: number;
     formats: {
         thumbnail: ImageFormat;
         small: ImageFormat;
@@ -52,7 +54,9 @@ export type ProductType = {
     publishedAt: string;
     locale: string | null;
     images: Image[];
+    category: CategoryType;
     localizations: any[];
-    }
+    width: number;     // New field
+    heigth:number; }
 
 
