@@ -17,7 +17,8 @@ export const BannerProduct = () => {
                 
                 {/* Button with responsive margin */}
                 <Link href="/shop" legacyBehavior>
-                    <a className={buttonVariants("mt-4 inline-block text-sm md:text-base lg:text-lg")}>
+                    {/* Use buttonVariants correctly here */}
+                    <a className={buttonVariants({ variant: "default", size: "lg" })}>
                         Comprar
                     </a>
                 </Link>
