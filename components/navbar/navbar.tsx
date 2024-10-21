@@ -53,11 +53,11 @@ export const Navbar = () => {
                         </span>
                         <span className="hidden md:block">
                             <Image 
-                                src="/AsimplelogoMini.png" 
+                                src="/AsimplelogoMini.svg" 
                                 alt="Julidaye Logo" 
-                                width={90} // Adjust width for desktop
-                                height={70} // Adjust height for desktop
-                                className="h-auto w-auto"
+                                width={128} // Adjust width for desktop
+                                height={128} // Adjust height for desktop
+                                className="relative top-15 z-20"
                             />
                         </span>
                     </Link>

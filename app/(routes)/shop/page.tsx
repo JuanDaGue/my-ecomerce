@@ -68,7 +68,7 @@ export default function Page() {
                                         width={30}
                                         strokeWidth={1}
                                         className={`h-6 w-6 transition-all duration-300 ${
-                                            isFavorite ? "fill-black dark:fill-white" : "fill-none hover:fill-black"
+                                            isFavorite ? "fill-black dark:fill-red-800" : "fill-white hover:fill-black"
                                         }`}
                                     />
                                 </button>

@@ -5,7 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
-
+import NextTopLoader from 'nextjs-toploader'
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -48,6 +48,17 @@ export default function RootLayout({
               opacity: 0.6, // Increases opacity
               filter: "sepia(30%) hue-rotate(-10deg)"
             }}
+          />
+          <NextTopLoader
+            color="#2299DD"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #2299DD,0 0 5px #2299DD"
           />
           <Navbar />
           <main style={{ position: "relative", zIndex: 1 }}>
