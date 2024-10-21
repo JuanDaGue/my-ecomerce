@@ -6,7 +6,6 @@ import { ResponseType } from "@/types/response";
 import { useFavorites } from "@/hooks/use-favorite";
 import { Separator } from "@/components/ui/separator";
 import { FiltersCategory } from "../categories/components/filtersCategory";
-import { CategoryProduct } from "@/types/categoryProducts";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 import { Heart } from "lucide-react";
 import { ProductActionButtons } from "@/components/ui/ProductActionButtons";

@@ -2,7 +2,6 @@
 import { useGetCategotyProducts } from "@/api/getCategoryProduct";
 import { SkeletonLoader } from "@/components/SkeletonLoader";
 import { ResponseType } from "@/types/response";
-import { CategoryProduct } from "@/types/categoryProducts";
 import { useParams} from "next/navigation";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { FiltersCategory } from "../components/filtersCategory";
