@@ -12,13 +12,20 @@ import { ProductType } from "@/types/products";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 import { useEffect, useState } from "react";
 
+// Helper function to filter products based on slug
 const filterProducts = (products: ProductType[], slug: string) => {
     return products.filter(product => product.slug.includes(slug));
 };
 
 export default function Page() {
     const params = useParams();
-    const { shopSlug } = params;
+    let { shopSlug } = params;
+
+    // Ensure shopSlug is a string (in case it's an array)
+    if (Array.isArray(shopSlug)) {
+        shopSlug = shopSlug[0]; // Take the first element if it's an array
+    }
+
     const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
     const { result, loading }: ResponseType = useGetAllProducts();
     const { addLoveItem, items, removeLoveItem } = useFavorites();
@@ -77,7 +84,7 @@ export default function Page() {
                                 <button
                                     className="absolute top-0 text-black hover:text-red-500 transition-colors duration-300"
                                     aria-label="Add to favorites"
-                                    onClick={() => handleToggleFavorite(product)} // Corrected here
+                                    onClick={() => handleToggleFavorite(product)}
                                 >
                                     <Heart
                                         width={30}

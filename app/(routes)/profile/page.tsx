@@ -3,8 +3,16 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+
+// Define the User type
+interface User {
+    id: string | number;
+    username: string;
+    email: string;
+}
+
 export default function ProfilePage() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState<User | null>(null); // Set the correct type
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
@@ -21,17 +29,20 @@ export default function ProfilePage() {
 
         try {
             // Fetch user profile information with the stored JWT
-            const response = await fetch("http://localhost:1337/api/users/me", {
-            headers: {
+            const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}api/users/me`,
+            {
+                headers: {
                 Authorization: `Bearer ${token}`,
-            },
-            });
+                },
+            }
+            );
 
             if (!response.ok) {
             throw new Error("Failed to fetch user info");
             }
 
-            const userData = await response.json();
+            const userData: User = await response.json(); // Type assertion for user data
             setUser(userData);
         } catch (error) {
             console.error("Error fetching profile:", error);
@@ -56,42 +67,48 @@ export default function ProfilePage() {
 
     return (
         <div className="min-h-screen">
-            <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-md ">
+        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
             {user ? (
-                <div>
+            <div>
                 <h2 className="text-2xl font-bold mb-4">Welcome, {user.username}</h2>
-                <p><strong>Email:</strong> {user.email}</p>
-                <p><strong>Username:</strong> {user.username}</p>
-                <p><strong>ID:</strong> {user.id}</p>
+                <p>
+                <strong>Email:</strong> {user.email}
+                </p>
+                <p>
+                <strong>Username:</strong> {user.username}
+                </p>
+                <p>
+                <strong>ID:</strong> {user.id}
+                </p>
                 {/* Additional user info */}
                 <button
-                    onClick={handleSignOut}
-                    className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md"
+                onClick={handleSignOut}
+                className="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md"
                 >
-                    Sign Out
+                Sign Out
                 </button>
-                </div>
+            </div>
             ) : (
-                <div>
+            <div>
                 <h2 className="text-2xl font-bold mb-4">Profile</h2>
                 <p className="mb-4">You are not logged in.</p>
                 <div className="flex justify-around">
-                    <Button
+                <Button
                     onClick={() => router.push("/profile/login")}
-                    className= "py-2 px-4 rounded-md"
-                    >
+                    className="py-2 px-4 rounded-md"
+                >
                     Log In
-                    </Button>
-                    <Button
+                </Button>
+                <Button
                     onClick={() => router.push("/profile/signup")}
-                    className= "bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
-                    >
+                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+                >
                     Sign Up
-                    </Button>
+                </Button>
                 </div>
-                </div>
-            )}
             </div>
+            )}
         </div>
-        );
+        </div>
+    );
 }
