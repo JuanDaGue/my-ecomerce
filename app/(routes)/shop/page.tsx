@@ -41,7 +41,7 @@ export default function Page() {
                 {loading ? (
                     <SkeletonLoader count={6} />
                 ) : (
-                    result.map((product: CategoryProduct) => {
+                    result.map((product: ProductType) => {
                         const isFavorite = items.some((favItem: ProductType) => favItem.id === product.id); // Calculate favorite state per product
 
                         return (

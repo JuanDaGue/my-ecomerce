@@ -12,10 +12,6 @@ import { Heart } from "lucide-react";
 import { ProductType } from "@/types/products";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 
-// interface InfoProps {
-//     product: ProductType;
-// }
-
 export default function Page() {
     const params = useParams();
     const { categoriesSlug } = params;
