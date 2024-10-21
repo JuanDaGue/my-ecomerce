@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/use-cart";
@@ -8,38 +9,38 @@ import axios from "axios";
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useEffect, useState } from "react";
 
-
-
 export default function Page() {
     const { items, removeAll } = useCart();
     const prices = items.map((item) => Number(item.price));
     const totalPrice = prices.reduce((total, price) => total + price, 0);
-
     const [preferenceId, setPreferenceId] = useState<string | null>(null);
 
     useEffect(() => {
-        initMercadoPago(process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLISHABLE_KEY, { locale: "es-CO" });
+        const publishableKey = process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLISHABLE_KEY;
+        if (publishableKey) {
+            initMercadoPago(publishableKey, { locale: "es-CO" });
+        } else {
+            console.error('MercadoPago publishable key is not defined');
+        }
     }, []);
 
     const data = {
-            orderid: "123445",
-            product: items.map((item) => ({
-                productName: item.productName,
-                price: Number(item.price),
-                quantity: 1,
-            }))
-        ,
+        orderid: "123445",
+        product: items.map((item) => ({
+            productName: item.productName,
+            price: Number(item.price),
+            quantity: 1,
+        })),
         back_urls: {
             success: typeof window !== 'undefined' ? `${window.location.origin}/success` : '',
             failure: typeof window !== 'undefined' ? `${window.location.origin}/failure` : '',
             pending: typeof window !== 'undefined' ? `${window.location.origin}/pending` : '',
         },
         auto_return: 'approved',
-    }
+    };
 
     const handleCheckout = async () => {
         try {
-
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}api/orders`,
                 data
