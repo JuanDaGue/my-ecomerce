@@ -1,3 +1,45 @@
+# My E-Commerce Project
+
+This is an eCommerce web application built with Next.js and Strapi, deployed on Vercel. The application includes functionalities like user sign-up, login, logout, and a payment system integration with MercadoPago.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+This project is an eCommerce platform that allows users to browse products, add them to their cart, and complete purchases using MercadoPago. The backend is powered by Strapi, which handles user authentication and product management.
+
+## Features
+
+- User Authentication (Sign Up, Login, Logout)
+- Product Listing
+- Add to Cart functionality
+- Checkout process with MercadoPago payment gateway
+
+## Technologies Used
+
+- Next.js
+- Strapi
+- Tailwind CSS
+- MercadoPago API
+- Vercel (for deployment)
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/JuanDaGue/my-ecomercedeploy.git
+cd my-ecomercedeploy
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
