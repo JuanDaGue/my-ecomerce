@@ -8,10 +8,10 @@ import axios from "axios";
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useEffect, useState } from "react";
 
-interface MercadoPagoResponse {
-    init_point: string;
-    preferenceId: string;
-}
+// interface MercadoPagoResponse {
+//     init_point: string;
+//     preferenceId: string;
+// }
 
 export default function Page() {
     const { items, removeAll } = useCart();
@@ -42,10 +42,10 @@ export default function Page() {
 
  
     //console.log(data)
-    const headers = {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI5NDQ4NDM4LCJleHAiOjE3MzIwNDA0Mzh9.M6NTC_utz-fN-rLV5NxjX-iz5xOwPFGG9MUAKhr0_y0",
-            'Content-Type': 'application/json'
-        }      
+    // const headers = {
+    //         Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzI5NDQ4NDM4LCJleHAiOjE3MzIwNDA0Mzh9.M6NTC_utz-fN-rLV5NxjX-iz5xOwPFGG9MUAKhr0_y0",
+    //         'Content-Type': 'application/json'
+    //     }      
     const handleCheckout = async () => {
         try {
 

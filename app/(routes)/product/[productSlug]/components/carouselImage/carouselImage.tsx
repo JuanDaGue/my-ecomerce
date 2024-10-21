@@ -6,9 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 interface CarouselProps {
   images: {
     id: number;
-    attributes: {
-      url: string;
-    }[];
+    url: string;
   };
 }
 

@@ -51,7 +51,7 @@ export const FeatureProducts = () => {
                             className="flex space-x-6 overflow-x-hidden no-scrollbar"
                         >
                             {result && result.map((product: ProductType) => {
-                                const { id, productName, price, images, slug } = product;
+                                const { id, productName, price, images} = product;
                                 return (
                                     <div
                                         key={id}

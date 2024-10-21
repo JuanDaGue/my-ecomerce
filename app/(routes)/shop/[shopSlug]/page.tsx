@@ -12,10 +12,6 @@ import { ProductType } from "@/types/products";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 import { useEffect, useState } from "react";
 
-interface InfoProps {
-    product: ProductType;
-}
-
 const filterProducts = (products: ProductType[], slug: string) => {
     return products.filter(product => product.slug.includes(slug));
 };

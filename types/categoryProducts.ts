@@ -5,7 +5,7 @@ export type CategoryProduct = {
     slug: string;
     description: string;
     active: boolean;
-    price: string;
+    price: number;
     type: string;
     taste: string;
     isFeatured: boolean | null;

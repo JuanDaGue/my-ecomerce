@@ -4,7 +4,6 @@ import { useGetDateails } from "@/api/getDetailsProduct";
 import { useParams } from "next/navigation";
 import { SkeletonLoader } from "@/components/SkeletonLoader";
 import { ResponseType } from "@/types/response";
-import { useRef } from "react";
 import { ImageDetails } from "./components/carouselImage";
 import { InfoCard } from "./components/infoCard"; // Import the Info component
 
@@ -12,7 +11,7 @@ export default function Page() {
     const params = useParams();
     const { productSlug } = params;
     const { result, loading }: ResponseType = useGetDateails(productSlug);
-    const scrollRef = useRef<HTMLDivElement>(null);
+
 
     return (
         <div className="flex justify-center items-center min-h-screen">

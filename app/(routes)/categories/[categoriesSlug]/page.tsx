@@ -3,7 +3,7 @@ import { useGetCategotyProducts } from "@/api/getCategoryProduct";
 import { SkeletonLoader } from "@/components/SkeletonLoader";
 import { ResponseType } from "@/types/response";
 import { CategoryProduct } from "@/types/categoryProducts";
-import { useParams, useRouter } from "next/navigation";
+import { useParams} from "next/navigation";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { FiltersCategory } from "../components/filtersCategory";
 import { ProductActionButtons } from "@/components/ui/ProductActionButtons";
@@ -12,9 +12,9 @@ import { Heart } from "lucide-react";
 import { ProductType } from "@/types/products";
 import { PriceFormatter } from "@/components/ui/ScrollButtons/PriceFormatter";
 
-interface InfoProps {
-    product: ProductType;
-}
+// interface InfoProps {
+//     product: ProductType;
+// }
 
 export default function Page() {
     const params = useParams();
@@ -46,7 +46,7 @@ export default function Page() {
                 {loading ? (
                     <SkeletonLoader count={3} />
                 ) : (
-                    result.map((product: CategoryProduct) => {
+                    result.map((product: ProductType) => {
                         const isFavorite = items.some((favItem: ProductType) => favItem.id === product.id); // Calculate favorite state per product
 
                         return (
