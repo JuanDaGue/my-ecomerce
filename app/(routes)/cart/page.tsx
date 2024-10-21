@@ -48,14 +48,12 @@ export default function Page() {
         }      
     const handleCheckout = async () => {
         try {
-            // Prepare the payload for MercadoPago
+
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}api/orders`,
                 data
             );
             const { init_point, preferenceId } = response.data;
-            console.log('OKKK', response.data)
-            // Set the preferenceId to be used in the Wallet component
             setPreferenceId(preferenceId);
             // Redirect to MercadoPago checkout page
             window.location.href = init_point;

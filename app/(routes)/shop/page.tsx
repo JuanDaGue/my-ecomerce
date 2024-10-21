@@ -30,11 +30,11 @@ export default function Page() {
     return (
         <div className="max-w-6xl py-4 mx-auto sm:py-16 sm:px-24 ">
             {result != null && <h1 className="text-3xl font-medium">Disfruta todos nuestros productos </h1>}
-            <Separator>
+            <Separator/>
                 <div>
                     <FiltersCategory />
                 </div>
-            </Separator>
+
             <div 
                 style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "16px" }}
             >

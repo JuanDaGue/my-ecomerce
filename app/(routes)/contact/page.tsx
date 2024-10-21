@@ -13,17 +13,17 @@ const ContactPage = () => {
                     Para preguntas sobre nuestros productos o asistencia con su pedido, contáctenos en:
                 </p>
                 <p className="text-lg text-gray-800 font-medium mb-4">
-                    Correo electrónico: <a href="mailto:support@religiousart.com" className="text-blue-500 hover:underline">support@religiousart.com</a>
+                    Correo electrónico: <a href="luzadrianauchimalargo@gmail.com" className="text-blue-500 hover:underline">luzadrianauchimalargo@gmail.com</a>
                 </p>
                 <p className="text-lg text-gray-800 font-medium mb-8">
-                    Teléfono: <a href="tel:+123456789" className="text-blue-500 hover:underline">+1 234 567 89</a>
+                    Teléfono: <a href="tel:+57 3006882557" className="text-blue-500 hover:underline">+57 300 688 2557</a>
                 </p>
                 <h2 className="text-2xl font-semibold mb-4">Visite Nuestro Taller</h2>
                 <p className="text-gray-700 leading-7 mb-4">
                     Nuestro taller está abierto a visitantes que deseen ver nuestra colección de arte en persona o discutir trabajos religiosos personalizados. Programe una cita o visítenos en:
                 </p>
                 <p className="text-lg text-gray-800 font-medium mb-4">
-                    Dirección: <span className="text-blue-500">123 Religious Art Street, Faith City, CO 12345</span>
+                    Dirección: <span className="text-blue-500">Cl. 66a #55A-51, La Candelaria, Medellín, La Candelaria,</span>
                 </p>
                 <h2 className="text-2xl font-semibold mb-4">Síganos</h2>
                 <p className="text-gray-700 leading-7">

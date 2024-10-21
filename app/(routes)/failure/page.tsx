@@ -10,7 +10,7 @@ const PageFailure = () => {
       <div className="flex flex-col-reverse gap-2 sm:flex-row">
         <div className="flex justify-center sm:min-w-[400px]">
           <Image
-            src="/failure-image.png" // Update the image source
+            src="/AsimplelogoMini.svg" // Update the image source
             alt="Payment Failed"
             width={350}
             height={500}
