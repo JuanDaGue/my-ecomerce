@@ -7,7 +7,7 @@ interface CarouselProps {
   images: {
     id: number;
     url: string;
-  };
+  }[];
 }
 
 export const ImageDetails = (props: CarouselProps) => {
