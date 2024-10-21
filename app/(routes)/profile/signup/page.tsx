@@ -38,8 +38,12 @@ export default function SignUpPage() {
 
         // Redirect to login or profile page
         router.push("/profile/login");
-        } catch (error: any) {
-        setError(error.message || "An error occurred during registration.");
+        } catch (error) { // Removed `any` type and handle error properly
+            if (error instanceof Error) {
+                setError(error.message || "An error occurred during login.");
+            } else {
+                setError("An unexpected error occurred.");
+            }
         }
     };
 

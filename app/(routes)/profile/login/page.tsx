@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
-    const [identifier, setIdentifier] = useState(""); 
+    const [identifier, setIdentifier] = useState(""); // Can be username or email
     const [password, setPassword] = useState("");
-    const [error, setError] = useState<string | null>(""); 
+    const [error, setError] = useState<string | null>(""); // Specified type for error
     const router = useRouter();
 
-    const handleLogin = async (e: FormEvent) => { 
+    const handleLogin = async (e: FormEvent) => { // Specified type for form event
         e.preventDefault();
         setError(""); // Clear previous errors
 
@@ -34,12 +34,16 @@ export default function LoginPage() {
 
             // Save JWT in localStorage or use it in your app's context
             localStorage.setItem("jwt", data.jwt);
-            console.log("Login successful:", data);
+            //console.log("Login successful:", data);
 
             // Redirect to the profile or dashboard
             router.push("/profile");
-        } catch (error: any) { // Fixed type error here
-            setError(error.message || "An error occurred during login.");
+        } catch (error) { // Removed `any` type and handle error properly
+            if (error instanceof Error) {
+                setError(error.message || "An error occurred during login.");
+            } else {
+                setError("An unexpected error occurred.");
+            }
         }
     };
 
